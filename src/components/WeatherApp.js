@@ -23,7 +23,7 @@ export default function WeatherApp() {
 
                 const json = await request.json();
 
-                console.log(json);
+                // console.log(json);
 
                 setTimeout(() => {
                     setWeather({ ...json });
