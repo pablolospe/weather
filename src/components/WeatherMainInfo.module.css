@@ -1,6 +1,6 @@
 .mainInfo{
     background-color: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -8,6 +8,7 @@
 .city{
     font-size: 32px;
     text-align: center;
+    letter-spacing: 3px;
     font-weight: bolder;
 }
 
@@ -21,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: -10px;
 }
 
 .condition{
@@ -29,4 +31,30 @@
 .current{
     font-size: 38px;
     font-weight: bold;
+}
+
+iframe{
+    max-height: 300px;
+}
+
+
+@media screen and (max-width:800px) {
+    .mainInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px;
+    }
+    .city{
+        font-size: 52px;
+        font-weight: bolder;
+    }
+    .country{
+        font-size: 30px;
+    }
+    iframe{
+        max-width: 300px;
+        max-height: 700px;
+    }
+
 }

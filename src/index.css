@@ -5,11 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: blueviolet;
-  
+  background-image: linear-gradient(180deg, #f2a040 0, #f99441 8.33%, #fe8743 16.67%, #ff7847 25%, #ff664c 33.33%, #ff5251 41.67%, #ff3858 50%, #fa0d60 58.33%, #f4006b 66.67%, #ec0077 75%, #e10085 83.33%, #d40094 91.67%, #c400a4 100%);
+  background-color: #c400a4;
+  background-size:cover;
+  background-repeat: repeat-x;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width:800px) {
+  body{
+    background-repeat:repeat-x;
+    background-image: linear-gradient(180deg, #f2a040 0, #f99441 8.33%, #fe8743 16.67%, #ff7847 25%, #ff664c 33.33%, #ff5251 41.67%, #ff3858 50%, #fa0d60 58.33%, #f4006b 66.67%, #ec0077 75%, #e10085 83.33%, #d40094 91.67%, #c400a4 100%);
+  }
+
 }
