@@ -6,6 +6,7 @@ import styles from './WeatherApp.module.css'
 
 export default function WeatherApp() {
     const [weather, setWeather] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(()=>{
         loadInfo();
@@ -23,14 +24,12 @@ export default function WeatherApp() {
 
                 const json = await request.json();
 
-                // console.log(json);
-
                 setTimeout(() => {
                     setWeather({ ...json });
                   }, 2000);
  
         } catch (error) {
-            console.error(error)
+            setErrorMessage("que tipeaste papá?")
         }
     }
 
@@ -40,7 +39,9 @@ export default function WeatherApp() {
     }
     return (
     <div className={styles.weatherContainer}>
+        {errorMessage && <p>{errorMessage}</p>}
         <WeatherForm onChangeCity={handleChangeCity} />
+        {console.log(weather)}
         {weather ?  <WeatherMainInfo weather={weather} /> : <Loading/>}
     </div>
     )
