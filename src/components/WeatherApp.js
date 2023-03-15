@@ -12,6 +12,12 @@ export default function WeatherApp() {
         loadInfo();
     },[]);
 
+    useEffect(() => {
+        if (weather) {
+          setErrorMessage('');
+        }
+      }, [weather]);
+
     useEffect(()=>{
         document.title = `Weather | ${weather?.location.name ?? ''}`
     },[weather]);
@@ -20,18 +26,21 @@ export default function WeatherApp() {
         try {
             const request = await fetch(
                 `${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`
-                );
-
-                const json = await request.json();
-
+            );
+            const json = await request.json();
+            
+            if (json.error) {
+                setErrorMessage(json.error.message);
+            } else {
                 setTimeout(() => {
                     setWeather({ ...json });
-                  }, 2000);
- 
+                }, 2000);
+            }
         } catch (error) {
-            setErrorMessage("que tipeaste papá?")
+            setErrorMessage("Ocurrió un error al cargar la información del clima. Por favor, intenta de nuevo más tarde.");
         }
     }
+    
 
     function handleChangeCity(city){
         setWeather(null);
@@ -39,10 +48,9 @@ export default function WeatherApp() {
     }
     return (
     <div className={styles.weatherContainer}>
-        {errorMessage && <p>{errorMessage}</p>}
         <WeatherForm onChangeCity={handleChangeCity} />
-        {console.log(weather)}
-        {weather ?  <WeatherMainInfo weather={weather} /> : <Loading/>}
+        {errorMessage && <p>{errorMessage}</p>}
+        {weather ? <WeatherMainInfo setErrorMessage={''} weather={weather} /> : <Loading/> }
     </div>
     )
 }
